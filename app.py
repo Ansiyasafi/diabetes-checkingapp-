@@ -5,16 +5,47 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix,accuracy_score
 lister=[]
 st.title("REGULAR BLOOD SUGAR LEVEL CHECKING FOR DIABETES")
-
-name=st.text_input("Enter your name")
-sex=st.radio("Select sex:", ['female', 'male','Other'])
-hypertension=st.radio("Select hypertension:", ['having','no'])
-heartdisease=st.radio("Select heart disease:", ['yes','no'])
-age=st.slider("select your age", 0, 100)
-smoking_history=st.selectbox("select the habit of smoking", ['never', 'No Info', 'current', 'former', 'ever', 'not current'])
-bmi=st.slider("Enter the bmi value",1,100)
-hba1c=st.number_input("Enter the hbaic value",0,10)
-bloodsugar=st.slider("Enter the bloodsugar value",30,500)
+def setting_bg():
+    st.markdown(f""" 
+    <style>
+        .stApp {{
+            background: linear-gradient(to right,  #5585b5, #4e4376);
+            background-size: cover;
+            transition: background 0.5s ease;
+        }}
+        h1,h2,h3,h4,h5,h6 {{
+            color: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
+        }}
+        .stButton>button {{
+            color: #4e4376;
+            background-color: #f96d00;
+            transition: all 0.3s ease-in-out;
+        }}
+        .stButton>button:hover {{
+            color: #f3f3f3;
+            background-color: #f95959;
+        }}
+        .stTextInput>div>div>input {{
+            color: #4e4376;
+            background-color: #f3f3f3;
+        }}
+    </style>
+    """,unsafe_allow_html=True) 
+setting_bg()
+col1,col2=st.columns(2)
+with col1:
+    name=st.text_input("Enter your name")
+    sex=st.radio("Select sex:", ['female', 'male','Other'])
+    hypertension=st.radio("Select hypertension:", ['having','no'])
+    heartdisease=st.radio("Select heart disease:", ['yes','no'])
+    age=st.slider("select your age", 0, 100)
+with col2:
+    
+    smoking_history=st.selectbox("select the habit of smoking", ['never', 'No Info', 'current', 'former', 'ever', 'not current'])
+    bmi=st.slider("Enter the bmi value",1,100)
+    hba1c=st.number_input("Enter the hbaic value",0,10)
+    bloodsugar=st.slider("Enter the bloodsugar value",30,500)
 
     #---------------------------------input data--------------
 if sex== "female":
